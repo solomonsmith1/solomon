@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<!--
+=====================================================================
+Real Estate Media Growth Assistants
+=====================================================================
+Purpose    : Real client. Nothing on this page is invented.
+Archetype  : E · done for you service. Calm B2B, transparent pricing tiers.
+Awareness  : Cold and problem aware. Opens on the problem.
+Wireframe  : W1 · hero centric, one primary CTA, sticky nav CTA
+Buyer      : Real estate photographers and real estate media companies
+Owner      : Solomon Smith
+
+TOKENS  cyan #2CCCE4 (client's own, off his profile picture) · dark #071418 · paper #F4F9FA
+        Cyan is a SURFACE, not an accent. Sections alternate cyan / dark / paper and the
+        text colour flips with them: near black on cyan and paper, white on dark.
+        White on this cyan is 1.9:1, so it is never used there.
+FONTS   Manrope (headings) · Inter (body). Spec requires readable sans serif.
+STYLE   Cards read from per surface variables, so one class on a <section> recolours
+        everything inside it. Client brand colours only: cyan, white, black.
+        No cursor driven background effect. Motion is typewriter headings, scroll
+        reveals, staggered cards, count up stats and the scroll progress bar.
+
+COMPLIANCE BUILT IN, from the client specification
+  no guaranteed leads, appointments, bookings or revenue anywhere
+  AI QC flags and human review described separately
+  no invented experience, years, team size or results
+  every future number must carry its measurement period
+  reviews and proofs are placeholders until genuine ones are supplied
+
+LANDED from the client's Drive, 21 Oct
+  cyan #2CCCE4 sampled off his profile picture · his 1:40 intro video, now the hero
+  12 client photos and company logos · 8 before/after quality control pairs
+  4 lot line and map pin examples · 12 tool logos · owner photo
+
+OUTSTANDING
+  Calendly link for the CTAs. Everything else on the page is real and in.
+
+=====================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.className+=" js";</script>
+<title>Real Estate Media Growth Assistants · Outreach, Media QC, Delivery and Admin</title>
+<link rel="icon" href="assets/brand/icon-32.png" sizes="32x32">
+<link rel="icon" href="assets/brand/icon-512.png" sizes="512x512">
+<link rel="apple-touch-icon" href="assets/brand/icon-180.png">
+<meta name="description" content="Virtual assistance for real estate photographers and media companies. Outreach, media quality control, delivery, content and admin, handled under one monthly service.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+  /* the client's cyan, picked off his own profile picture. It is a SURFACE here,
+     not an accent: sections alternate cyan, near black and paper, and the text
+     colour flips per surface. White on this cyan is 1.9:1, which is unreadable,
+     so cyan sections always carry near black text. */
+  --cyan:#2CCCE4; --cyan-lift:#5BDCEF; --cyan-deep:#15A9C2; --cyan-ink:#0A7082;
+  --dark:#071418; --dark-2:#0C1F25; --paper:#F4F9FA;
+  --ink:#06161A; --white:#FFFFFF;
+  /* per surface slots, redefined by .sec--cyan / .sec--dark / .sec--paper below */
+  --surf:rgba(255,255,255,.05); --brd:rgba(255,255,255,.12); --sub:#9FB2BA;
+  --acc:var(--cyan); --acc-soft:rgba(44,204,228,.13); --acc-brd:rgba(44,204,228,.34);
+  --btn-bg:var(--cyan); --btn-ink:#04151A; --btn-glow:rgba(44,204,228,.30);
+
+  --f-display:'Manrope',system-ui,sans-serif; --f-body:'Inter',system-ui,sans-serif;
+  --h1:clamp(1.8rem,4.8vw,3rem); --h2:clamp(1.45rem,4.2vw,2.3rem); --h3:1.1rem;
+  --lead:1.04rem; --eyebrow:.7rem; --stat:clamp(2rem,6.4vw,3rem);
+  --pad-x:18px; --sec-y:58px; --radius:16px;
+  --e-out:cubic-bezier(.16,1,.3,1); --e-back:cubic-bezier(.34,1.4,.64,1);
+}
+@media(min-width:900px){ :root{ --pad-x:26px; --sec-y:96px; } }
+
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip;background:var(--dark)}
+body{background:var(--dark);color:var(--white);font-family:var(--f-body);line-height:1.62;overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding:0 var(--pad-x)}
+.sec{padding:var(--sec-y) 0;position:relative;background:transparent}
+.sec--grad{background:linear-gradient(135deg,#071418 0%,#0D2A32 55%,#06161A 100%)}
+.sec--surface{background:linear-gradient(160deg,#0C1F25 0%,#13303A 100%)}
+/* ===== surfaces ===== */
+.sec--cyan{background:var(--cyan);color:var(--ink);
+  --surf:rgba(255,255,255,.58); --brd:rgba(6,22,26,.14); --sub:rgba(6,22,26,.72);
+  --acc:var(--ink); --acc-soft:rgba(6,22,26,.09); --acc-brd:rgba(6,22,26,.22);
+  --btn-bg:var(--ink); --btn-ink:var(--cyan); --btn-glow:rgba(6,22,26,.26)}
+.sec--dark{background:var(--dark);color:var(--white);
+  --surf:rgba(255,255,255,.05); --brd:rgba(255,255,255,.12); --sub:#9FB2BA;
+  --acc:var(--cyan); --acc-soft:rgba(44,204,228,.13); --acc-brd:rgba(44,204,228,.34);
+  --btn-bg:var(--cyan); --btn-ink:#04151A; --btn-glow:rgba(44,204,228,.30)}
+.sec--paper{background:var(--paper);color:var(--ink);
+  --surf:#FFFFFF; --brd:rgba(6,22,26,.11); --sub:#55666D;
+  --acc:var(--cyan-ink); --acc-soft:rgba(44,204,228,.14); --acc-brd:rgba(44,204,228,.42);
+  --btn-bg:var(--cyan); --btn-ink:#04151A; --btn-glow:rgba(44,204,228,.32)}
+/* a cyan band reads flat over a tall section, so lift one corner very slightly */
+.sec--cyan{background-image:radial-gradient(900px 520px at 88% -10%,rgba(255,255,255,.34),transparent 70%)}
+.sec--dark{background-image:radial-gradient(760px 460px at 8% -12%,rgba(44,204,228,.10),transparent 68%)}
+
+
+.eyebrow{font-size:var(--eyebrow);font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:var(--acc);margin-bottom:14px}
+h1{font-family:var(--f-display);font-size:var(--h1);font-weight:800;line-height:1.08;letter-spacing:-.02em;margin-bottom:16px}
+h2{font-family:var(--f-display);font-size:var(--h2);font-weight:700;line-height:1.18;margin-bottom:14px;position:relative;padding-bottom:16px;text-align:center}
+h2::after{content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:0;height:3px;width:0;border-radius:3px;
+  background:linear-gradient(90deg,var(--acc),transparent);transition:width 1.1s var(--e-out) .25s}
+.js .rv.in h2::after{width:170px}
+html:not(.js) h2::after{width:170px}
+h3{font-family:var(--f-display);font-size:var(--h3);font-weight:700;margin-bottom:8px}
+.cy{color:var(--acc)}
+/* on a cyan band the emphasis word cannot be cyan and white would be 1.9:1,
+   so it stays near black and takes a white bar underneath instead */
+.sec--cyan .cy{color:var(--ink);background-image:linear-gradient(var(--white),var(--white));
+  background-size:100% .13em;background-position:0 94%;background-repeat:no-repeat;padding-bottom:.05em}
+.lead{font-size:var(--lead);color:var(--sub);max-width:640px}
+p{color:var(--sub);margin-bottom:13px}
+p:last-child{margin-bottom:0}
+.intro{max-width:720px;margin:0 auto;text-align:center}
+.intro .lead{margin-inline:auto}
+
+.btn{position:relative;overflow:hidden;display:block;width:100%;text-align:center;background:var(--btn-bg);color:var(--btn-ink);
+  font-family:var(--f-display);font-weight:700;font-size:.98rem;padding:16px 30px;border-radius:10px;text-decoration:none;
+  box-shadow:0 10px 32px var(--btn-glow);transition:transform .25s var(--e-out),box-shadow .25s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 18px 44px var(--btn-glow)}
+.btn::after{content:"";position:absolute;inset:0;transform:translateX(-110%) skewX(-18deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);transition:transform .75s var(--e-out)}
+.btn:hover::after{transform:translateX(110%) skewX(-18deg)}
+.btn--ghost{background:transparent;color:currentColor;border:1px solid var(--brd);box-shadow:none}
+.btn--ghost:hover{border-color:var(--acc);box-shadow:none}
+@media(min-width:640px){.btn{display:inline-block;width:auto}}
+.fud{font-size:.82rem;color:var(--sub);margin-top:13px}
+.fud i{color:var(--acc);margin-right:7px}
+
+/* glassmorphism cards */
+.card{background:var(--surf);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--brd);border-radius:var(--radius);padding:26px 22px;height:100%;
+  transition:transform .45s var(--e-out),border-color .45s,background .45s}
+.card:hover{transform:translateY(-6px);border-color:var(--acc-brd);background:var(--surf);filter:brightness(1.06)}
+.grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:760px){.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}}
+.icn{width:46px;height:46px;border-radius:12px;background:var(--acc-soft);border:1px solid var(--acc-brd);
+  display:flex;align-items:center;justify-content:center;color:var(--acc);font-size:1.02rem;margin-bottom:16px}
+.tick{list-style:none;margin-top:4px}
+.tick li{display:flex;gap:10px;align-items:flex-start;padding:6px 0;font-size:.9rem;color:var(--sub)}
+.tick i{color:var(--acc);margin-top:5px;font-size:.74rem}
+
+.slot{border:1.5px dashed var(--acc-brd);border-radius:var(--radius);
+  background:repeating-linear-gradient(135deg,var(--acc-soft) 0 12px,transparent 12px 24px);
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:26px 18px;
+  font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--acc);min-height:150px}
+.slot--tall{min-height:280px}
+
+
+
+/* ===== intro video ===== */
+.hero-vid-col{display:flex;justify-content:center}
+.vid{position:relative;width:min(100%,290px);margin:0}
+.vid video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:22px;
+  background:#06161A;border:3px solid var(--white);box-shadow:0 16px 44px rgba(6,22,26,.26)}
+.vid-play{position:absolute;top:0;left:0;right:0;bottom:34px;width:100%;border:0;cursor:pointer;
+  background:none;display:grid;place-items:center;border-radius:22px;transition:opacity .3s}
+.vid-play::before{content:"";width:66px;height:66px;border-radius:50%;background:var(--white);
+  box-shadow:0 8px 28px rgba(6,22,26,.34);transition:transform .3s var(--e-back)}
+.vid-play i{position:absolute;color:#06161A;font-size:1.25rem;margin-left:5px;
+  top:50%;left:50%;transform:translate(-50%,-50%)}
+.vid-play:hover::before{transform:scale(1.09)}
+.vid.playing .vid-play{opacity:0;pointer-events:none}
+.vid figcaption{margin-top:12px;text-align:center;font-size:.8rem;color:var(--sub)}
+@media(min-width:900px){.vid{width:min(100%,320px)}}
+
+
+
+/* ===== owner ===== */
+.owner{margin:0;text-align:center}
+/* the image is capped at 360px but the column is wider, and a block image
+   ignores text-align, so without auto margins it sat left while the caption
+   underneath centred on the column: the two never lined up */
+.owner img{width:min(100%,360px);margin:0 auto;aspect-ratio:1;object-fit:cover;border-radius:50%;
+  border:5px solid var(--white);box-shadow:0 18px 46px rgba(6,22,26,.26)}
+.owner figcaption{margin-top:16px;display:flex;flex-direction:column;line-height:1.35}
+.owner figcaption b{font-family:var(--f-display);font-size:1.06rem;font-weight:700;color:var(--ink)}
+.owner figcaption span{font-size:.82rem;color:var(--sub);margin-top:3px}
+
+/* ===== tool stack ===== */
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(min-width:560px){.tools{grid-template-columns:repeat(4,1fr);gap:14px}}
+@media(min-width:900px){.tools{grid-template-columns:repeat(6,1fr);gap:16px}}
+.tool{margin:0;text-align:center}
+.tool img{width:100%;aspect-ratio:1;object-fit:contain;background:var(--white);
+  border-radius:14px;padding:13px;border:1px solid var(--brd);
+  transition:transform .35s var(--e-out),box-shadow .35s}
+.tool:hover img{transform:translateY(-4px);box-shadow:0 10px 26px rgba(0,0,0,.3)}
+.tool figcaption{margin-top:8px;font-size:.68rem;font-weight:600;letter-spacing:.3px;color:var(--sub)}
+
+
+
+/* ===== brand mark ===== */
+.brand{display:flex;align-items:center;flex:0 0 auto;margin-right:auto;text-decoration:none}
+.brand{gap:11px}
+.brand img{width:auto;display:block}
+.brand img.brand-mark{height:40px}
+/* the wordmark is set in the page's own type beside the mark, which stays
+   readable at nav height in a way the logo's stacked lettering cannot */
+.brand-word{display:none;font-family:var(--f-display);font-size:.82rem;font-weight:700;
+  line-height:1.15;letter-spacing:.02em;color:var(--white);max-width:9.5em;text-transform:uppercase}
+.brand-word b{color:var(--cyan);font-weight:700}
+@media(min-width:720px){.brand-word{display:block}.brand img.brand-mark{height:44px}}
+.flogo{height:74px;width:auto;margin:0 auto 14px}
+
+
+
+/* ===== cursor grid =====
+   Fixed sheet of dots that lean away from the pointer and spring back. It sits
+   above the section backgrounds but under everything you read or click, and its
+   palette flips with whichever surface is filling the screen, because a cyan dot
+   on the cyan band and a dark dot on the dark band are both invisible. */
+/* Behind everything, the way Valency does it: the page itself is the dark
+   backdrop, the canvas sits under it all at z-index -1, and content occludes it
+   rather than being drawn over. The dark bands are transparent so the dots read
+   through them; the cyan and paper bands stay opaque and simply cover it, which
+   is what keeps the effect off the photographs. */
+#dots{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;
+  opacity:0;transition:opacity 1s ease}
+#dots.on{opacity:1}
+/* the canvas paints the band colours itself, so the sections drop theirs, but
+   only once it is actually running: with no JS the CSS backgrounds still stand */
+.dots-bg body,.dots-bg .sec--cyan,.dots-bg .sec--paper,.dots-bg .sec--dark,
+.dots-bg .marquee{background-color:transparent}
+/* the footer keeps its own background and so stays out of the effect entirely */
+footer{position:relative;z-index:2}
+@media(prefers-reduced-motion:reduce){#dots{display:none}}
+
+
+/* stacked on a phone these read as three stray left aligned lines, so centre
+   them there; from tablet up they sit in their own columns and stay left */
+.herostats{text-align:center}
+@media(min-width:760px){.herostats{text-align:left}}
+
+/* ===== lot line belt =====
+   A single row that never stops, three or four aerials in view at once. The set
+   is laid down twice and the track shifts by exactly half, so the loop has no
+   seam. Pauses on hover so a given shot can be looked at. */
+.belt{overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.belt-track{display:flex;gap:16px;width:max-content;animation:beltRun 64s linear infinite}
+.belt-track img{height:190px;width:auto;flex:0 0 auto;display:block;border-radius:12px;
+  border:1px solid var(--brd);background:var(--surf);
+  transition:transform .4s var(--e-out),box-shadow .4s var(--e-out)}
+@media(min-width:760px){.belt-track img{height:250px}}
+@media(min-width:1200px){.belt-track img{height:290px}}
+.belt-track img:hover{transform:translateY(-5px) scale(1.02);box-shadow:0 16px 38px rgba(0,0,0,.4)}
+.belt:hover .belt-track{animation-play-state:paused}
+/* half of the track is one full set, plus half of one gap */
+@keyframes beltRun{to{transform:translateX(calc(-50% - 8px))}}
+@media(prefers-reduced-motion:reduce){
+  .belt-track{animation:none}
+  .belt{overflow-x:auto;-webkit-mask-image:none;mask-image:none}
+}
+
+/* ===== outreach proof ===== */
+.mailrow{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:26px}
+@media(min-width:760px){.mailrow{grid-template-columns:repeat(2,1fr);gap:20px}}
+.mailcard{margin:0}
+.mailcard img{width:100%;border-radius:12px;border:1px solid var(--brd);display:block}
+.mailcard figcaption{margin-top:9px;font-size:.78rem;color:var(--sub);text-align:center}
+/* two belts of DM screenshots, running opposite ways */
+.dmrow{overflow:hidden;margin-bottom:14px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.dmtrack{display:flex;gap:14px;width:max-content}
+.dmrow--l .dmtrack{animation:dmL 92s linear infinite}
+.dmrow--r .dmtrack{animation:dmR 92s linear infinite}
+.dmtrack img{height:188px;width:auto;border-radius:10px;border:1px solid var(--brd);
+  display:block;flex:0 0 auto;background:var(--surf)}
+@media(min-width:900px){.dmtrack img{height:250px}}
+/* the track holds the set twice, so shifting by half of it loops seamlessly */
+@keyframes dmL{to{transform:translateX(calc(-50% - 7px))}}
+@keyframes dmR{from{transform:translateX(calc(-50% - 7px))}to{transform:translateX(0)}}
+.dmrow:hover .dmtrack{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){.dmtrack{animation:none!important}
+  .dmrow{overflow-x:auto;-webkit-mask-image:none;mask-image:none}}
+
+/* ===== client wall ===== */
+.cl-wall{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 14px}
+@media(min-width:560px){.cl-wall{grid-template-columns:repeat(3,1fr);gap:24px 18px}}
+@media(min-width:900px){.cl-wall{grid-template-columns:repeat(6,1fr);gap:28px 20px}}
+.cl{text-align:center}
+.cl-pic{position:relative;width:100%;aspect-ratio:1;border-radius:50%;overflow:hidden;
+  background:var(--surf);border:3px solid var(--white);
+  box-shadow:0 8px 24px rgba(6,22,26,.18);transition:transform .4s var(--e-out),box-shadow .4s}
+.cl:hover .cl-pic{transform:translateY(-5px) scale(1.03);box-shadow:0 14px 34px rgba(6,22,26,.28)}
+/* full length shots put the face near the top, so bias the frame upward
+   rather than cropping the files themselves */
+.cl-pic img:not(.cl-badge){width:100%;height:100%;object-fit:cover;object-position:center 22%}
+.cl-badge{position:absolute;right:-2px;bottom:-2px;width:38%;height:38%;border-radius:50%;
+  object-fit:contain;object-position:center;background:var(--white);padding:4px;
+  border:2px solid var(--white);box-shadow:0 2px 8px rgba(6,22,26,.22)}
+.cl figcaption{margin-top:11px;display:flex;flex-direction:column;line-height:1.3}
+.cl figcaption b{font-family:var(--f-display);font-size:.88rem;font-weight:700;color:var(--ink)}
+.cl figcaption span{font-size:.74rem;color:var(--sub);margin-top:2px}
+
+
+.ba-grid{display:grid;grid-template-columns:1fr;gap:30px}
+@media(min-width:760px){.ba-grid{grid-template-columns:repeat(2,1fr);gap:34px 26px}}
+.mk{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--radius);
+  border:1px solid var(--brd);background:var(--surf)}
+
+/* ===== before / after slider =====
+   Both images are full size and stacked; the top one is clipped by clip-path at
+   --p, so there is no width maths and it stays correct at any container size. */
+.ba-wrap{perspective:1200px}
+.ba{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:3/2;
+  border:1px solid var(--brd);background:var(--surf);cursor:ew-resize;
+  touch-action:pan-y;overscroll-behavior:contain;user-select:none;-webkit-user-select:none;--p:50%;
+  transform-style:preserve-3d;
+  transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
+  transition:transform .55s var(--e-out),box-shadow .55s var(--e-out)}
+/* while the pointer is on it the tilt has to track, not glide, or it lags
+   behind the cursor; the slow curve comes back when the pointer leaves */
+.ba--tilt{transition:transform .08s linear,box-shadow .4s var(--e-out);
+  box-shadow:0 26px 60px rgba(0,0,0,.42);will-change:transform}
+/* the divider and the labels sit above the picture plane, which is what sells
+   the depth once the card is tilted */
+.ba-h{transform:translateZ(34px)}
+.ba-tag{transform:translateZ(24px)}
+.ba .ba-after{transform:translateZ(.1px)}
+@media(prefers-reduced-motion:reduce){
+  .ba,.ba-h,.ba-tag,.ba .ba-after{transform:none!important;transition:none}
+}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.ba .ba-after{clip-path:inset(0 calc(100% - var(--p)) 0 0)}
+.ba-h{position:absolute;top:0;bottom:0;left:var(--p);width:2px;margin-left:-1px;
+  background:var(--white);box-shadow:0 0 0 1px rgba(0,0,0,.28);pointer-events:none;
+  transition:left .18s linear}
+.ba-h::after{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:42px;height:42px;border-radius:50%;background:var(--white);
+  box-shadow:0 4px 18px rgba(0,0,0,.34)}
+.ba-h i{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;
+  color:#06161A;font-size:.82rem}
+.ba-tag{position:absolute;top:12px;z-index:2;font-family:var(--f-display);font-size:.62rem;
+  font-weight:800;letter-spacing:1.6px;text-transform:uppercase;padding:5px 11px;border-radius:30px;
+  background:rgba(6,22,26,.72);color:var(--white);backdrop-filter:blur(6px);pointer-events:none}
+.ba-tag--a{left:12px} .ba-tag--b{right:12px;background:var(--cyan);color:#06161A}
+.ba-cap{font-size:.84rem;color:var(--sub);margin-top:10px;text-align:center}
+.ba-wrap h3{text-align:center;margin-bottom:12px}
+@media(prefers-reduced-motion:no-preference){.ba img{transition:none}}
+
+
+/* nav */
+/* scrolls away with the page: it is not pinned */
+nav{position:relative;z-index:60;background:rgba(7,20,24,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--brd)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px}
+.nav-links{display:none;gap:24px}
+.nav-links a{font-size:.85rem;color:var(--sub);text-decoration:none;transition:color .25s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.current{color:var(--acc)}
+/* taken out of the flex flow and pinned to the centre of the bar, so the links
+   are optically centred whatever the logo and the button measure, and can never
+   run into the button the way they did when all three shared one flex row */
+@media(min-width:1040px){
+  nav .wrap{position:relative}
+  .nav-links{display:flex;position:absolute;left:50%;transform:translateX(-50%)}
+}
+.nav-cta{font-family:var(--f-display);font-size:.79rem;font-weight:700;color:#04151A;background:var(--cyan);
+  padding:0 18px;height:44px;display:inline-flex;align-items:center;border-radius:8px;text-decoration:none;white-space:nowrap}
+
+/* hero */
+#top{min-height:100dvh;display:flex;flex-direction:column;justify-content:flex-start;padding-top:28px;padding-bottom:38px}
+@media(min-width:900px){#top{justify-content:center;padding-top:70px;padding-bottom:46px}}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:22px;align-items:start}
+@media(min-width:900px){.hero-grid{grid-template-columns:1.08fr .92fr;gap:36px;align-items:center}}
+h1 .w,h2 .w{display:inline-block;white-space:nowrap}
+h1 .ch{display:inline-block;will-change:transform,opacity,filter}
+.js h1.split .ch{opacity:0;transform:translateY(58px) rotateX(-80deg) scale(.88);filter:blur(6px);
+  animation:chIn .9s var(--e-out) forwards}
+@keyframes chIn{60%{filter:blur(0)}to{opacity:1;transform:none;filter:blur(0)}}
+h2 .ch{display:inline-block}
+h2 .ch.sp{white-space:pre}
+.js h2.tw .ch{visibility:hidden}
+.js h2.tw.typed .ch{visibility:visible}
+h2 .caret{display:inline-block;width:3px;height:1em;margin-left:3px;vertical-align:-.12em;background:var(--acc);opacity:0;border-radius:2px}
+.js h2.tw.typing .caret{opacity:1;animation:blink .8s steps(1,end) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* marquee */
+.marquee{overflow:hidden;border-top:1px solid var(--brd);border-bottom:1px solid var(--brd);padding:16px 0;background:var(--dark-2)}
+.mq{display:flex;gap:40px;width:max-content;animation:sl 46s linear infinite}
+.mq span{font-family:var(--f-display);font-size:.77rem;font-weight:700;letter-spacing:2.2px;text-transform:uppercase;color:var(--sub);white-space:nowrap}
+.mq i{color:var(--acc);margin-right:12px;font-size:.4rem;vertical-align:middle}
+@keyframes sl{to{transform:translateX(-50%)}}
+
+/* numbers */
+.num{font-family:var(--f-display);font-size:var(--stat);font-weight:800;color:var(--acc);line-height:1;
+  font-variant-numeric:tabular-nums;display:inline-block;transition:transform .7s var(--e-back)}
+.js .rv .num{transform:scale(.74)} .js .rv.in .num{transform:scale(1)}
+.numlabel{font-size:.71rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--sub);margin-top:8px}
+
+/* pricing */
+.price{background:var(--surf);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--brd);border-radius:var(--radius);padding:28px 24px;position:relative;height:100%;
+  display:flex;flex-direction:column;transition:transform .45s var(--e-out),border-color .45s}
+.price:hover{transform:translateY(-6px);border-color:var(--acc-brd)}
+.price.feat{border-color:var(--acc);box-shadow:0 0 36px var(--acc-soft)}
+.price .amt{font-family:var(--f-display);font-size:2.1rem;font-weight:800;color:var(--acc);line-height:1}
+.price .per{font-size:.82rem;color:var(--sub);margin-bottom:14px}
+.price .btn{margin-top:auto}
+.ribbon{position:absolute;top:-11px;left:24px;background:var(--acc);color:var(--btn-ink);font-size:.6rem;font-weight:800;
+  letter-spacing:1.3px;text-transform:uppercase;padding:5px 12px;border-radius:30px}
+.ptable{width:100%;border-collapse:collapse;margin-top:16px;background:var(--surf);backdrop-filter:blur(14px);
+  border:1px solid var(--brd);border-radius:var(--radius);overflow:hidden}
+.ptable td{padding:15px 20px;border-bottom:1px solid var(--brd);font-size:.93rem;color:var(--sub)}
+.ptable tr:last-child td{border-bottom:0}
+.ptable td:last-child{text-align:right;color:var(--acc);font-weight:700;font-family:var(--f-display);white-space:nowrap}
+.sublabel{font-family:var(--f-display);font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--sub);margin:34px 0 4px;text-align:center}
+
+/* faq */
+.faq{border-bottom:1px solid var(--brd)}
+.faq button{width:100%;background:none;border:0;color:currentColor;font-family:var(--f-display);font-weight:700;
+  font-size:1rem;text-align:left;padding:20px 42px 20px 0;cursor:pointer;position:relative}
+.faq button i{position:absolute;right:4px;top:50%;transform:translateY(-50%);color:var(--acc);font-size:.85rem;transition:transform .3s}
+.faq.open button i{transform:translateY(-50%) rotate(45deg)}
+.faq .ans{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq.open .ans{max-height:440px}
+.faq .ans p{padding-bottom:20px;font-size:.94rem}
+
+/* reveal + stagger */
+.rv{transition:opacity .8s var(--e-out),transform .9s var(--e-back)}
+/* Default reveal. The direction follows the way you are scrolling, so going back
+   up the page the content drops in from above instead of rising from below. */
+.js .rv{opacity:0;transform:translateY(54px) scale(.975)}
+.js.scrolling-up .rv{transform:translateY(-46px) scale(.975)}
+.js .rv.in{opacity:1;transform:none}
+/* A two column row reveals from the side each half actually sits on: the image
+   slides in from the left, the words from the right. Assigned in JS off the real
+   measured position, and dropped again when the row stacks on a phone. */
+.js .rv[data-rv="left"]{transform:translateX(-64px) scale(.985)}
+.js .rv[data-rv="right"]{transform:translateX(64px) scale(.985)}
+.js .rv[data-rv="left"].in,.js .rv[data-rv="right"].in{transform:none}
+.js .stag.in > *{animation:stagIn .62s var(--e-back) both}
+@keyframes stagIn{from{opacity:0;transform:translateY(26px) scale(.94)}to{opacity:1;transform:none}}
+.js .stag.in > *:nth-child(1){animation-delay:0ms}
+.js .stag.in > *:nth-child(2){animation-delay:70ms}
+.js .stag.in > *:nth-child(3){animation-delay:140ms}
+.js .stag.in > *:nth-child(4){animation-delay:210ms}
+.js .stag.in > *:nth-child(5){animation-delay:280ms}
+.js .stag.in > *:nth-child(6){animation-delay:350ms}
+
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:100;transform-origin:0 50%;
+  background:linear-gradient(90deg,var(--acc),var(--cyan-lift));transform:scaleX(0);pointer-events:none}
+@supports (animation-timeline:scroll()){
+  .progress{animation:bar linear both;animation-timeline:scroll(root)}
+  @keyframes bar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+}
+
+/* mobile drawer */
+.burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;margin-left:-6px;background:none;border:0;cursor:pointer;padding:0}
+.burger span{display:block;width:22px;height:2px;border-radius:2px;background:var(--white);margin:0 auto;transition:transform .32s var(--e-out),opacity .22s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(min-width:1040px){.burger{display:none}}
+.scrim{position:fixed;inset:0;background:rgba(3,6,8,.7);backdrop-filter:blur(3px);z-index:120;opacity:0;transition:opacity .32s}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(82vw,330px);z-index:130;
+  background:linear-gradient(160deg,#0C1F25 0%,#071418 100%);border-left:1px solid var(--brd);
+  padding:84px 26px 32px;transform:translateX(102%);transition:transform .4s var(--e-out);display:flex;flex-direction:column}
+.drawer nav{display:flex;flex-direction:column;position:static;background:none;border:0}
+.drawer a.dl{font-family:var(--f-display);font-weight:700;font-size:1.06rem;color:var(--white);text-decoration:none;
+  padding:15px 0;border-bottom:1px solid var(--brd);transition:color .25s,padding-left .25s}
+.drawer a.dl:hover{color:var(--acc);padding-left:7px}
+.drawer-close{position:absolute;top:22px;right:20px;width:44px;height:44px;background:none;border:0;color:var(--sub);font-size:1.3rem;cursor:pointer}
+body.locked{overflow:hidden}
+
+.needbox{background:rgba(255,170,60,.08);border:1px solid rgba(255,170,60,.34);border-radius:10px;
+  padding:13px 16px;font-size:.82rem;color:#FFC87A;margin-top:18px}
+footer{background:#03090B;color:var(--white);border-top:1px solid rgba(255,255,255,.12);
+  padding:58px 0 26px;--surf:rgba(255,255,255,.05);--brd:rgba(255,255,255,.12);--sub:#9FB2BA;--acc:var(--cyan)}
+/* four columns on desktop, two on a tablet, one stacked on a phone */
+.fgrid{display:grid;grid-template-columns:1fr;gap:34px 26px;text-align:center}
+@media(min-width:620px){.fgrid{grid-template-columns:repeat(2,1fr);text-align:left}}
+@media(min-width:1000px){.fgrid{grid-template-columns:1.5fr 1fr 1.2fr 1.4fr;gap:40px}}
+.fcol{display:flex;flex-direction:column;align-items:center}
+@media(min-width:620px){.fcol{align-items:flex-start}}
+.fcol h4{font-family:var(--f-display);font-size:.74rem;font-weight:700;letter-spacing:1.6px;
+  text-transform:uppercase;color:var(--acc);margin-bottom:14px}
+.fcol a{font-size:.87rem;color:var(--sub);text-decoration:none;padding:5px 0;
+  transition:color .25s,transform .25s var(--e-out);display:flex;align-items:center;gap:9px}
+.fcol a:hover{color:var(--white)}
+@media(min-width:620px){.fcol a:hover{transform:translateX(3px)}}
+.fcol a i{font-size:.78rem;color:var(--acc);width:15px;flex:0 0 auto}
+.flogo{height:84px;width:auto;margin-bottom:14px}
+@media(min-width:620px){.flogo{margin-left:-4px}}
+.ftag{font-size:.88rem;color:var(--sub);margin-bottom:18px;max-width:24ch}
+.social{display:flex;gap:10px}
+.social a{width:40px;height:40px;border-radius:10px;border:1px solid var(--brd);
+  display:flex;align-items:center;justify-content:center;color:var(--sub);
+  transition:color .25s,border-color .25s,background .25s}
+.social a:hover{color:#04151A;background:var(--cyan);border-color:var(--cyan);transform:none}
+.social a i{color:inherit;width:auto}
+.fcta{margin-top:16px;width:auto;display:inline-flex;justify-content:center;font-size:.84rem;padding:11px 20px}
+.fcta:hover{transform:translateY(-2px)}
+.fbottom{border-top:1px solid var(--brd);margin-top:40px;padding-top:20px;font-size:.78rem;color:#55707A;
+  display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:center;text-align:center}
+@media(min-width:760px){.fbottom{justify-content:space-between;text-align:left}}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .js .rv,.js .stag.in > *,.js .rv[data-rv]{opacity:1;transform:none}
+  .js h1.split .ch{opacity:1;transform:none;filter:none}
+  .js h2.tw .ch{visibility:visible}
+  h2 .caret,.progress{display:none}
+  .js .rv .num{transform:none}
+  .js .rv.in h2::after{width:170px}
+}
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+
+<canvas id="dots" aria-hidden="true"></canvas>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand" aria-label="Real Estate Media Growth Assistants, home">
+      <!-- the logo is a stacked lockup, so in a nav bar the wordmark under the mark
+           is unreadable at any height that fits. The mark carries it here; the
+           footer has the vertical room for the whole thing. -->
+      <img class="brand-mark" src="assets/brand/icon-light-96.png" alt="Real Estate Media Growth Assistants"
+           width="96" height="96" fetchpriority="high" decoding="async">
+      <span class="brand-word">Real Estate <b>Media Growth</b> Assistants</span></a>
+    <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="#top">Home</a><a href="#services">Services</a><a href="#how">How It Works</a>
+      <a href="#proofs">Proofs</a><a href="#about">About</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
+    </div>
+    <a href="#contact" class="nav-cta">Book a Meeting</a>
+  </div>
+</nav>
+
+<div class="scrim" hidden></div>
+<aside id="drawer" class="drawer" aria-hidden="true">
+  <button class="drawer-close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+  <nav aria-label="Mobile">
+    <a class="dl" href="#top">Home</a><a class="dl" href="#services">Services</a>
+    <a class="dl" href="#how">How It Works</a><a class="dl" href="#proofs">Proofs</a>
+    <a class="dl" href="#about">About</a><a class="dl" href="#pricing">Pricing</a>
+    <a class="dl" href="#faq">FAQ</a>
+  </nav>
+  <a href="#contact" class="btn" style="margin-top:22px">Book a Meeting</a>
+</aside>
+
+<!-- ===== HERO ===== -->
+<section class="sec sec--cyan" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="rv">
+        <div class="eyebrow">For real estate photographers and media companies</div>
+        <h1>The shoot is yours.<br><span class="cy">Everything after it</span><br>is ours.</h1>
+        <p class="lead">Outreach, media quality control, delivery, content and admin, handled under one monthly service so you can stay behind the camera instead of in the inbox.</p>
+        <a href="#contact" class="btn" style="margin-top:8px">Book a Meeting</a>
+        <div class="fud"><i class="fa-solid fa-circle-check"></i>No obligation. We agree the scope and the responsibilities before any work begins.</div>
+        <div class="grid g3 stag herostats" style="margin-top:30px;gap:14px">
+          <div><div class="num">5</div><div class="numlabel">Service areas covered</div></div>
+          <div><div class="num">65</div><div class="numlabel">Properties on the standard plan</div></div>
+          <div><div class="num">150</div><div class="numlabel">Entry price per month, USD</div></div>
+        </div>
+      </div>
+      <div class="rv hero-vid-col">
+        <!-- Solomon's own intro. It is 9:16 with him speaking, so it sits in a
+             phone shaped frame and waits for a click rather than autoplaying. -->
+        <figure class="vid" id="introvid">
+          <video playsinline preload="none" poster="assets/video/intro-poster.webp"
+                 src="assets/video/intro.mp4"></video>
+          <button type="button" class="vid-play" aria-label="Play the introduction from Solomon">
+            <i class="fa-solid fa-play" aria-hidden="true"></i>
+          </button>
+          <figcaption>A minute from Solomon on how the service runs</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee"><div class="mq">
+  <span><i class="fa-solid fa-circle"></i>Social media outreach</span><span><i class="fa-solid fa-circle"></i>Email outreach</span>
+  <span><i class="fa-solid fa-circle"></i>Cold calling</span><span><i class="fa-solid fa-circle"></i>Media quality control</span>
+  <span><i class="fa-solid fa-circle"></i>Media delivery</span><span><i class="fa-solid fa-circle"></i>Content creation</span>
+  <span><i class="fa-solid fa-circle"></i>Personal branding</span><span><i class="fa-solid fa-circle"></i>Admin support</span>
+  <span><i class="fa-solid fa-circle"></i>Social media outreach</span><span><i class="fa-solid fa-circle"></i>Email outreach</span>
+  <span><i class="fa-solid fa-circle"></i>Cold calling</span><span><i class="fa-solid fa-circle"></i>Media quality control</span>
+  <span><i class="fa-solid fa-circle"></i>Media delivery</span><span><i class="fa-solid fa-circle"></i>Content creation</span>
+  <span><i class="fa-solid fa-circle"></i>Personal branding</span><span><i class="fa-solid fa-circle"></i>Admin support</span>
+</div></div>
+
+<!-- ===== PROBLEM ===== -->
+<section class="sec sec--dark" id="problem">
+  <div class="wrap">
+    <div class="rv intro">
+      <div class="eyebrow">The part that eats the week</div>
+      <h2>The shoot takes two hours. <span class="cy">The rest takes the week.</span></h2>
+      <p class="lead">Running a real estate media business is mostly not photography. It is follow ups, order chasing, file checking, delivery links, and the outreach you keep meaning to get to.</p>
+    </div>
+    <div class="grid g3 stag rv" style="margin-top:38px">
+      <div class="card"><div class="icn"><i class="fa-solid fa-inbox"></i></div>
+        <h3>The inbox never closes</h3>
+        <p>Booking requests, revision notes and agent questions arrive all day. Every one of them interrupts an edit you were halfway through.</p></div>
+      <div class="card"><div class="icn"><i class="fa-solid fa-folder-open"></i></div>
+        <h3>Delivery is a second job</h3>
+        <p>Check the files, organise the folders, upload, send the link, then remember which orders are still outstanding and which editor owes you a fix.</p></div>
+      <div class="card"><div class="icn"><i class="fa-solid fa-user-clock"></i></div>
+        <h3>Outreach keeps slipping</h3>
+        <p>New work needs prospecting. Prospecting needs hours. The hours go to the orders already booked, so next month looks like last month.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="sec sec--cyan" id="services">
+  <div class="wrap">
+    <div class="rv intro">
+      <div class="eyebrow">What we handle</div>
+      <h2>Five jobs. <span class="cy">One partner.</span></h2>
+      <p class="lead">Take one service or all five. Scope, responsibilities and communication are agreed with you before anything starts.</p>
+    </div>
+    <div class="grid g3 stag rv" style="margin-top:38px">
+
+      <div class="card"><div class="icn"><i class="fa-solid fa-bullhorn"></i></div>
+        <h3>Outreach</h3>
+        <p>Social media, email and phone prospecting aimed at real estate agents who book media.</p>
+        <ul class="tick">
+          <li><i class="fa-solid fa-check"></i>Identify and research relevant agent prospects</li>
+          <li><i class="fa-solid fa-check"></i>Build and organise prospect lists</li>
+          <li><i class="fa-solid fa-check"></i>Personalised messages based on each prospect's business</li>
+          <li><i class="fa-solid fa-check"></i>Follow ups on the agreed sequence</li>
+          <li><i class="fa-solid fa-check"></i>Manage replies and flag interested prospects</li>
+        </ul></div>
+
+      <div class="card"><div class="icn"><i class="fa-solid fa-image"></i></div>
+        <h3>Media quality control</h3>
+        <p>Completed property media checked against your standards before it reaches your client.</p>
+        <ul class="tick">
+          <li><i class="fa-solid fa-check"></i>Exposure, brightness, colour and white balance</li>
+          <li><i class="fa-solid fa-check"></i>Alignment, vertical lines and presentation</li>
+          <li><i class="fa-solid fa-check"></i>Visible editing errors and inconsistencies</li>
+          <li><i class="fa-solid fa-check"></i>File completeness against the order</li>
+          <li><i class="fa-solid fa-check"></i>Flag images needing correction, coordinate revisions</li>
+        </ul></div>
+
+      <div class="card"><div class="icn"><i class="fa-solid fa-truck-fast"></i></div>
+        <h3>Media delivery</h3>
+        <p>The daily admin of getting finished work to the client, off your desk.</p>
+        <ul class="tick">
+          <li><i class="fa-solid fa-check"></i>Organise completed property orders</li>
+          <li><i class="fa-solid fa-check"></i>Confirm required files are present before sending</li>
+          <li><i class="fa-solid fa-check"></i>Upload through your delivery platform</li>
+          <li><i class="fa-solid fa-check"></i>Check order details and delivery links</li>
+          <li><i class="fa-solid fa-check"></i>Send notifications and track what is outstanding</li>
+        </ul></div>
+
+      <div class="card"><div class="icn"><i class="fa-solid fa-pen-nib"></i></div>
+        <h3>Content and personal branding</h3>
+        <p>A consistent professional presence that shows the work you are already doing.</p>
+        <ul class="tick">
+          <li><i class="fa-solid fa-check"></i>Content planning, posts and carousels</li>
+          <li><i class="fa-solid fa-check"></i>Captions and educational content ideas</li>
+          <li><i class="fa-solid fa-check"></i>Content from recent property shoots</li>
+          <li><i class="fa-solid fa-check"></i>Profile optimisation and brand messaging</li>
+          <li><i class="fa-solid fa-check"></i>Scheduling and publishing approved content</li>
+        </ul></div>
+
+      <div class="card"><div class="icn"><i class="fa-solid fa-headset"></i></div>
+        <h3>Admin and operations</h3>
+        <p>The recurring work that fills a day without moving the business forward.</p>
+        <ul class="tick">
+          <li><i class="fa-solid fa-check"></i>Inbox triage, flagging and approved replies</li>
+          <li><i class="fa-solid fa-check"></i>Business calls, messages and routing</li>
+          <li><i class="fa-solid fa-check"></i>Booking enquiries and order updates</li>
+          <li><i class="fa-solid fa-check"></i>Editor coordination and deadline follow up</li>
+          <li><i class="fa-solid fa-check"></i>Records, spreadsheets and task lists</li>
+        </ul></div>
+
+      <div class="card" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
+        <div class="icn"><i class="fa-solid fa-robot"></i></div>
+        <h3>AI assisted checks, inside quality control</h3>
+        <p>Automated checks flag the obvious problems, then a person reviews every flag by hand and coordinates the corrections. This is part of Media Quality Control, not a separate line on the invoice.</p>
+        <a href="#contact" class="btn btn--ghost" style="margin-top:14px">Discuss Your Requirements</a></div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="sec sec--dark" id="how">
+  <div class="wrap">
+    <div class="rv intro">
+      <div class="eyebrow">How we work</div>
+      <h2>Your workflow. <span class="cy">Not ours.</span></h2>
+      <p class="lead">We do not arrive with a system you have to adopt. We learn the one you already run, then take the parts you hand over.</p>
+    </div>
+    <div class="grid g4 stag rv" style="margin-top:36px">
+      <div class="card"><div class="num" style="font-size:1.6rem">01</div>
+        <h3 style="margin-top:12px">Understand</h3>
+        <p>We go through your existing processes, tools and standards before suggesting anything.</p></div>
+      <div class="card"><div class="num" style="font-size:1.6rem">02</div>
+        <h3 style="margin-top:12px">Agree</h3>
+        <p>Responsibilities, communication and service expectations are written down and confirmed.</p></div>
+      <div class="card"><div class="num" style="font-size:1.6rem">03</div>
+        <h3 style="margin-top:12px">Follow</h3>
+        <p>We work to your preferred workflow and your quality standards, not a generic template.</p></div>
+      <div class="card"><div class="num" style="font-size:1.6rem">04</div>
+        <h3 style="margin-top:12px">Report</h3>
+        <p>Tasks and open issues stay organised, and we escalate anything that needs your decision.</p></div>
+    </div>
+    <div class="rv" style="margin-top:52px">
+      <h3 style="text-align:center;margin-bottom:6px">The tools we work inside</h3>
+      <p class="lead" style="text-align:center;margin:0 auto 24px">Your stack, not ours. These are the platforms we already operate in for media companies. We are users of them, not partners of them.</p>
+      <div class="tools stag">
+        <figure class="tool"><img src="assets/tools/cubicasa.webp" alt="CubiCasa" loading="lazy" decoding="async"><figcaption>CubiCasa</figcaption></figure>
+        <figure class="tool"><img src="assets/tools/matterport.webp" alt="Matterport" loading="lazy" decoding="async"><figcaption>Matterport</figcaption></figure>
+        <figure class="tool"><img src="assets/tools/iguide.webp" alt="iGUIDE" loading="lazy" decoding="async"><figcaption>iGUIDE</figcaption></figure>
+        <figure class="tool"><img src="assets/tools/zillow3d.webp" alt="Zillow 3D Home" loading="lazy" decoding="async"><figcaption>Zillow 3D Home</figcaption></figure>
+        <figure class="tool"><img src="assets/tools/hdphotohub.webp" alt="HD PhotoHub" loading="lazy" decoding="async"><figcaption>HD PhotoHub</figcaption></figure>
+        <figure class="tool"><img src="assets/tools/aryeo.webp" alt="Aryeo" loading="lazy" decoding="async"><figcaption>Aryeo</figcaption></figure>
+        <figure class="tool"><img src="assets/tools/spiro.webp" alt="Spiro" loading="lazy" decoding="async"><figcaption>Spiro</figcaption></figure>
+        <figure class="tool"><img src="assets/tools/fotello.webp" alt="Fotello" loading="lazy" decoding="async"><figcaption>Fotello</figcaption></figure>
+        <figure class="tool"><img src="assets/tools/tonomo.webp" alt="Tonomo" loading="lazy" decoding="async"><figcaption>Tonomo</figcaption></figure>
+        <figure class="tool"><img src="assets/tools/lightroom.webp" alt="Lightroom Classic" loading="lazy" decoding="async"><figcaption>Lightroom Classic</figcaption></figure>
+        <figure class="tool"><img src="assets/tools/photoshop.webp" alt="Photoshop" loading="lazy" decoding="async"><figcaption>Photoshop</figcaption></figure>
+        <figure class="tool"><img src="assets/tools/autohdr.webp" alt="Auto HDR" loading="lazy" decoding="async"><figcaption>Auto HDR</figcaption></figure>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="sec sec--cyan" id="about">
+  <div class="wrap">
+    <div class="grid g2 rv" style="gap:38px;align-items:center">
+      <figure class="owner">
+        <img src="assets/owner/solomon.webp" alt="Solomon Smith, Real Estate Media Growth Assistants"
+             width="760" height="760" loading="lazy" decoding="async">
+        <figcaption><b>Solomon Smith</b><span>Real Estate Media Growth Assistants</span></figcaption>
+      </figure>
+      <div>
+        <div class="eyebrow">Who we are</div>
+        <h2 style="text-align:left">Your partner in media operations and <span class="cy">business growth.</span></h2>
+        <p>Real Estate Media Growth Assistants supports real estate photographers and media companies with the operational and business development tasks that keep a business moving. Outreach and prospect management, media quality control, delivery, content, and administrative support.</p>
+        <p>Running a real estate media business involves much more than taking great photographs. It also requires consistent communication, organised order management, reliable delivery workflows, client relationships, and ongoing business development. Our services exist so you can delegate those parts.</p>
+        <p><b style="color:var(--ink)">Our mission.</b> To support real estate media professionals with practical, dependable assistance across client acquisition, media operations and business administration.</p>
+        <p><b style="color:var(--ink)">Our goal.</b> Give media business owners more time to focus on their craft, serve their clients, and develop their businesses.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROOFS ===== -->
+<section class="sec sec--dark" id="proofs">
+  <div class="wrap">
+    <div class="rv intro">
+      <div class="eyebrow">Proofs and results</div>
+      <h2>Judge the work, <span class="cy">not the claim.</span></h2>
+      <p class="lead">Every pair below is a real file that went through our quality control. Drag the handle to see what changed. Published with client permission.</p>
+    </div>
+    <div class="ba-grid rv" style="margin-top:38px">
+      <div class="ba-wrap">
+        <h3>Drone angle correction</h3>
+        <div class="ba">
+          <img src="assets/qc/drone-angle-before.webp" alt="drone angle correction, before" loading="lazy" decoding="async">
+          <img class="ba-after" src="assets/qc/drone-angle-after.webp" alt="drone angle correction, after" loading="lazy" decoding="async">
+          <span class="ba-tag ba-tag--a">Before</span>
+          <span class="ba-tag ba-tag--b">After</span>
+          <span class="ba-h"><i class="fa-solid fa-left-right" aria-hidden="true"></i></span>
+        </div>
+        <p class="ba-cap">The horizon is levelled before the set leaves us.</p>
+      </div>
+      <div class="ba-wrap">
+        <h3>Interior angle correction</h3>
+        <div class="ba">
+          <img src="assets/qc/interior-angle-before.webp" alt="interior angle correction, before" loading="lazy" decoding="async">
+          <img class="ba-after" src="assets/qc/interior-angle-after.webp" alt="interior angle correction, after" loading="lazy" decoding="async">
+          <span class="ba-tag ba-tag--a">Before</span>
+          <span class="ba-tag ba-tag--b">After</span>
+          <span class="ba-h"><i class="fa-solid fa-left-right" aria-hidden="true"></i></span>
+        </div>
+        <p class="ba-cap">Verticals straightened so the walls read true.</p>
+      </div>
+      <div class="ba-wrap">
+        <h3>Colour correction</h3>
+        <div class="ba">
+          <img src="assets/qc/colour-before.webp" alt="colour correction, before" loading="lazy" decoding="async">
+          <img class="ba-after" src="assets/qc/colour-after.webp" alt="colour correction, after" loading="lazy" decoding="async">
+          <span class="ba-tag ba-tag--a">Before</span>
+          <span class="ba-tag ba-tag--b">After</span>
+          <span class="ba-h"><i class="fa-solid fa-left-right" aria-hidden="true"></i></span>
+        </div>
+        <p class="ba-cap">Colour casts removed and the whites set neutral.</p>
+      </div>
+      <div class="ba-wrap">
+        <h3>Cars and bins removed</h3>
+        <div class="ba">
+          <img src="assets/qc/cars-before.webp" alt="cars and bins removed, before" loading="lazy" decoding="async">
+          <img class="ba-after" src="assets/qc/cars-after.webp" alt="cars and bins removed, after" loading="lazy" decoding="async">
+          <span class="ba-tag ba-tag--a">Before</span>
+          <span class="ba-tag ba-tag--b">After</span>
+          <span class="ba-h"><i class="fa-solid fa-left-right" aria-hidden="true"></i></span>
+        </div>
+        <p class="ba-cap">Driveways and kerbs cleared of vehicles and bins.</p>
+      </div>
+      <div class="ba-wrap">
+        <h3>Cords and wires removed</h3>
+        <div class="ba">
+          <img src="assets/qc/cords-before.webp" alt="cords and wires removed, before" loading="lazy" decoding="async">
+          <img class="ba-after" src="assets/qc/cords-after.webp" alt="cords and wires removed, after" loading="lazy" decoding="async">
+          <span class="ba-tag ba-tag--a">Before</span>
+          <span class="ba-tag ba-tag--b">After</span>
+          <span class="ba-h"><i class="fa-solid fa-left-right" aria-hidden="true"></i></span>
+        </div>
+        <p class="ba-cap">Cables and leads taken out of frame.</p>
+      </div>
+      <div class="ba-wrap">
+        <h3>Clutter removed</h3>
+        <div class="ba">
+          <img src="assets/qc/clutter-before.webp" alt="clutter removed, before" loading="lazy" decoding="async">
+          <img class="ba-after" src="assets/qc/clutter-after.webp" alt="clutter removed, after" loading="lazy" decoding="async">
+          <span class="ba-tag ba-tag--a">Before</span>
+          <span class="ba-tag ba-tag--b">After</span>
+          <span class="ba-h"><i class="fa-solid fa-left-right" aria-hidden="true"></i></span>
+        </div>
+        <p class="ba-cap">Personal items cleared from the room.</p>
+      </div>
+      <div class="ba-wrap">
+        <h3>Virtual staging</h3>
+        <div class="ba">
+          <img src="assets/qc/staging-before.webp" alt="virtual staging, before" loading="lazy" decoding="async">
+          <img class="ba-after" src="assets/qc/staging-after.webp" alt="virtual staging, after" loading="lazy" decoding="async">
+          <span class="ba-tag ba-tag--a">Before</span>
+          <span class="ba-tag ba-tag--b">After</span>
+          <span class="ba-h"><i class="fa-solid fa-left-right" aria-hidden="true"></i></span>
+        </div>
+        <p class="ba-cap">Empty rooms furnished so buyers can read the space.</p>
+      </div>
+      <div class="ba-wrap">
+        <h3>Virtual twilight</h3>
+        <div class="ba">
+          <img src="assets/qc/twilight-before.webp" alt="virtual twilight, before" loading="lazy" decoding="async">
+          <img class="ba-after" src="assets/qc/twilight-after.webp" alt="virtual twilight, after" loading="lazy" decoding="async">
+          <span class="ba-tag ba-tag--a">Before</span>
+          <span class="ba-tag ba-tag--b">After</span>
+          <span class="ba-h"><i class="fa-solid fa-left-right" aria-hidden="true"></i></span>
+        </div>
+        <p class="ba-cap">Daytime exteriors taken to dusk.</p>
+      </div>
+      <div class="ba-wrap">
+        <h3>Clutter removed</h3>
+        <div class="ba">
+          <img src="assets/qc/clutter2-before.webp" alt="Clutter removed, before" loading="lazy" decoding="async">
+          <img class="ba-after" src="assets/qc/clutter2-after.webp" alt="Clutter removed, after" loading="lazy" decoding="async">
+          <span class="ba-tag ba-tag--a">Before</span>
+          <span class="ba-tag ba-tag--b">After</span>
+          <span class="ba-h"><i class="fa-solid fa-left-right" aria-hidden="true"></i></span>
+        </div>
+        <p class="ba-cap">A second room cleared of personal items.</p>
+      </div>
+      <div class="ba-wrap">
+        <h3>Cars and bins removed</h3>
+        <div class="ba">
+          <img src="assets/qc/cars2-before.webp" alt="Cars and bins removed, before" loading="lazy" decoding="async">
+          <img class="ba-after" src="assets/qc/cars2-after.webp" alt="Cars and bins removed, after" loading="lazy" decoding="async">
+          <span class="ba-tag ba-tag--a">Before</span>
+          <span class="ba-tag ba-tag--b">After</span>
+          <span class="ba-h"><i class="fa-solid fa-left-right" aria-hidden="true"></i></span>
+        </div>
+        <p class="ba-cap">A second driveway cleared before delivery.</p>
+      </div>
+    </div>
+
+    <div class="rv" style="margin-top:54px">
+      <h3 style="text-align:center;margin-bottom:6px">Lot lines and location pins</h3>
+      <p class="lead" style="text-align:center;margin:0 auto 22px">Boundaries, unit callouts and location pins added by hand onto the aerials, checked against the plan before delivery.</p>
+      <div class="belt" aria-label="Lot lines and location pins">
+        <div class="belt-track"><img src="assets/qc/lotlines-1.webp" alt="Aerial with lot lines marked" loading="lazy" decoding="async"><img src="assets/qc/mappins-1.webp" alt="Aerial with a location pin on the property" loading="lazy" decoding="async"><img src="assets/qc/lotlines-4.webp" alt="Aerial with the full parcel boundary drawn" loading="lazy" decoding="async"><img src="assets/qc/mappins-3.webp" alt="Aerial with a branded location pin on the property" loading="lazy" decoding="async"><img src="assets/qc/lotlines-2.webp" alt="Aerial with lot lines marked" loading="lazy" decoding="async"><img src="assets/qc/mappins-4.webp" alt="Aerial with a location pin on the property" loading="lazy" decoding="async"><img src="assets/qc/lotlines-3.webp" alt="A block of townhouses with one unit outlined and labelled" loading="lazy" decoding="async"><img src="assets/qc/mappins-2.webp" alt="Aerial with location pins added" loading="lazy" decoding="async"><img src="assets/qc/lotlines-1.webp" alt="Aerial with lot lines marked" loading="lazy" decoding="async"><img src="assets/qc/mappins-1.webp" alt="Aerial with a location pin on the property" loading="lazy" decoding="async"><img src="assets/qc/lotlines-4.webp" alt="Aerial with the full parcel boundary drawn" loading="lazy" decoding="async"><img src="assets/qc/mappins-3.webp" alt="Aerial with a branded location pin on the property" loading="lazy" decoding="async"><img src="assets/qc/lotlines-2.webp" alt="Aerial with lot lines marked" loading="lazy" decoding="async"><img src="assets/qc/mappins-4.webp" alt="Aerial with a location pin on the property" loading="lazy" decoding="async"><img src="assets/qc/lotlines-3.webp" alt="A block of townhouses with one unit outlined and labelled" loading="lazy" decoding="async"><img src="assets/qc/mappins-2.webp" alt="Aerial with location pins added" loading="lazy" decoding="async"></div>
+      </div>
+    </div>
+
+    <div class="rv" style="margin-top:56px">
+      <h3 style="text-align:center;margin-bottom:6px">Replies from the outreach</h3>
+      <p class="lead" style="text-align:center;margin:0 auto 22px">Real conversations booked for our clients. Every name, profile picture, phone number and email address has been removed.</p>
+      <div class="mailrow">
+        <figure class="mailcard">
+          <img src="assets/outreach/reply-floorplans.webp" alt="An emailed reply asking about Zillow 3D floor plans and Matterport" loading="lazy" decoding="async">
+          <figcaption>A broker replying to a cold email, asking what we cover</figcaption>
+        </figure>
+        <figure class="mailcard">
+          <img src="assets/outreach/reply-pricing.webp" alt="An emailed reply asking how pricing compares" loading="lazy" decoding="async">
+          <figcaption>Another, asking how the pricing compares</figcaption>
+        </figure>
+      </div>
+      <div class="dmrow dmrow--l"><div class="dmtrack"><img src="assets/outreach/dm-01.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-02.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-03.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-04.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-05.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-06.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-07.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-08.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-01.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-02.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-03.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-04.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-05.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-06.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-07.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-08.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"></div></div>
+      <div class="dmrow dmrow--r"><div class="dmtrack"><img src="assets/outreach/dm-09.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-10.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-11.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-12.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-13.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-14.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-15.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-16.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-09.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-10.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-11.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-12.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-13.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-14.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-15.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"><img src="assets/outreach/dm-16.webp" alt="A reply to an outreach message, names removed" loading="lazy" decoding="async"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section class="sec sec--cyan" id="reviews">
+  <div class="wrap">
+    <div class="rv intro">
+      <div class="eyebrow">Who we work with</div>
+      <h2>The people <span class="cy">behind the listings.</span></h2>
+      <p class="lead">Real estate photographers and media companies who hand us the work that happens after the shoot. Shown with their permission.</p>
+    </div>
+    <div class="cl-wall stag rv" style="margin-top:38px">
+      <figure class="cl">
+        <div class="cl-pic"><img src="assets/clients/amy.webp" alt="Amy of Davari Photography" loading="lazy" decoding="async"></div>
+        <figcaption><b>Amy</b><span>Davari Photography</span></figcaption>
+      </figure>
+      <figure class="cl">
+        <div class="cl-pic"><img src="assets/clients/bethany.webp" alt="Bethany of Lupine Real Estate Media" loading="lazy" decoding="async"></div>
+        <figcaption><b>Bethany</b><span>Lupine Real Estate Media</span></figcaption>
+      </figure>
+      <figure class="cl">
+        <div class="cl-pic"><img src="assets/clients/brooklyn.webp" alt="Brooklyn of Re Media LLC" loading="lazy" decoding="async">
+        <img class="cl-badge" src="assets/clients/brooklyn-logo.webp" alt="" loading="lazy" decoding="async"></div>
+        <figcaption><b>Brooklyn</b><span>Re Media LLC</span></figcaption>
+      </figure>
+      <figure class="cl">
+        <div class="cl-pic"><img src="assets/clients/darien.webp" alt="Darien and Austin of Apex Visual Media" loading="lazy" decoding="async">
+        <img class="cl-badge" src="assets/clients/darien-logo.webp" alt="" loading="lazy" decoding="async"></div>
+        <figcaption><b>Darien &amp; Austin</b><span>Apex Visual Media</span></figcaption>
+      </figure>
+      <figure class="cl">
+        <div class="cl-pic"><img src="assets/clients/gilbert.webp" alt="Gilbert and Sydnie of GSM Media" loading="lazy" decoding="async"></div>
+        <figcaption><b>Gilbert &amp; Sydnie</b><span>GSM Media</span></figcaption>
+      </figure>
+      <figure class="cl">
+        <div class="cl-pic"><img src="assets/clients/james.webp" alt="James of Atlantic Digital Media" loading="lazy" decoding="async">
+        <img class="cl-badge" src="assets/clients/james-logo.webp" alt="" loading="lazy" decoding="async"></div>
+        <figcaption><b>James</b><span>Atlantic Digital Media</span></figcaption>
+      </figure>
+      <figure class="cl">
+        <div class="cl-pic"><img src="assets/clients/karla.webp" alt="Karla of KMS Photography" loading="lazy" decoding="async"></div>
+        <figcaption><b>Karla</b><span>KMS Photography</span></figcaption>
+      </figure>
+      <figure class="cl">
+        <div class="cl-pic"><img src="assets/clients/matt.webp" alt="Matt of Cam Media LLC" loading="lazy" decoding="async">
+        <img class="cl-badge" src="assets/clients/matt-logo.webp" alt="" loading="lazy" decoding="async"></div>
+        <figcaption><b>Matt</b><span>Cam Media LLC</span></figcaption>
+      </figure>
+      <figure class="cl">
+        <div class="cl-pic"><img src="assets/clients/michelle.webp" alt="Michelle of MandW Real Estate Media" loading="lazy" decoding="async">
+        <img class="cl-badge" src="assets/clients/michelle-logo.webp" alt="" loading="lazy" decoding="async"></div>
+        <figcaption><b>Michelle</b><span>M&amp;W Real Estate Media</span></figcaption>
+      </figure>
+      <figure class="cl">
+        <div class="cl-pic"><img src="assets/clients/ryan.webp" alt="Ryan of Ryan Vitelli Media" loading="lazy" decoding="async"></div>
+        <figcaption><b>Ryan</b><span>Ryan Vitelli Media</span></figcaption>
+      </figure>
+      <figure class="cl">
+        <div class="cl-pic"><img src="assets/clients/simon.webp" alt="Simon of Caya Medias" loading="lazy" decoding="async">
+        <img class="cl-badge" src="assets/clients/simon-logo.webp" alt="" loading="lazy" decoding="async"></div>
+        <figcaption><b>Simon</b><span>Caya Medias</span></figcaption>
+      </figure>
+      <figure class="cl">
+        <div class="cl-pic"><img src="assets/clients/trey.webp" alt="Trey of Bywaters Media" loading="lazy" decoding="async"></div>
+        <figcaption><b>Trey</b><span>Bywaters Media</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="sec sec--paper" id="pricing">
+  <div class="wrap">
+    <div class="rv intro">
+      <div class="eyebrow">Pricing, in USD</div>
+      <h2>Monthly subscriptions. <span class="cy">Scope agreed first.</span></h2>
+      <p class="lead">Every plan below is a recurring monthly service. Deliverable volumes and working hours are confirmed with you in writing before the first month starts.</p>
+    </div>
+
+    <div class="rv">
+      <div class="sublabel">Outreach</div>
+      <table class="ptable">
+        <tr><td>Social media outreach</td><td>$360 / month</td></tr>
+        <tr><td>Email outreach</td><td>$360 / month</td></tr>
+        <tr><td>Cold calling</td><td>$360 / month</td></tr>
+        <tr><td><b style="color:var(--ink)">All in One Outreach</b>, all three channels coordinated</td><td>$500 / month</td></tr>
+      </table>
+    </div>
+
+    <div class="rv">
+      <div class="sublabel">Media quality control and delivery</div>
+      <div class="grid g3 stag" style="margin-top:16px">
+        <div class="price">
+          <h3>Standard monthly</h3>
+          <div class="amt">$450</div><div class="per">per month</div>
+          <ul class="tick">
+            <li><i class="fa-solid fa-check"></i>Quality control and delivery, both included</li>
+            <li><i class="fa-solid fa-check"></i>Covers up to 65 properties per month</li>
+            <li><i class="fa-solid fa-check"></i>Each property above 65 adds $3</li>
+            <li><i class="fa-solid fa-check"></i>70 properties is $465. 80 is $495.</li>
+          </ul>
+          <a href="#contact" class="btn" style="margin-top:18px">Book a Meeting</a>
+        </div>
+        <div class="price feat">
+          <span class="ribbon">No volume cap</span>
+          <h3>Unlimited volume</h3>
+          <div class="amt">$599</div><div class="per">per month</div>
+          <ul class="tick">
+            <li><i class="fa-solid fa-check"></i>Quality control and delivery, both included</li>
+            <li><i class="fa-solid fa-check"></i>Covers every property delivered that month</li>
+            <li><i class="fa-solid fa-check"></i>No per property fee above 65</li>
+            <li><i class="fa-solid fa-check"></i>For studios with heavy or unpredictable months</li>
+          </ul>
+          <a href="#contact" class="btn" style="margin-top:18px">Book a Meeting</a>
+        </div>
+        <div class="price">
+          <h3>Weekend only</h3>
+          <div class="amt">$3</div><div class="per">per property</div>
+          <ul class="tick">
+            <li><i class="fa-solid fa-check"></i>A separate weekend service</li>
+            <li><i class="fa-solid fa-check"></i>Charged per property, not monthly</li>
+            <li><i class="fa-solid fa-check"></i>Not an automatic add on to the monthly plans</li>
+            <li><i class="fa-solid fa-check"></i>For covering weekend turnaround only</li>
+          </ul>
+          <a href="#contact" class="btn btn--ghost" style="margin-top:18px">Discuss Your Requirements</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="rv">
+      <div class="sublabel">Content and admin</div>
+      <table class="ptable">
+        <tr><td>Content creation and personal branding</td><td>$399 / month</td></tr>
+        <tr><td>Administrative support</td><td>$150 / month</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== FAQ ===== -->
+<section class="sec sec--dark" id="faq">
+  <div class="wrap" style="max-width:820px">
+    <div class="rv intro">
+      <div class="eyebrow">Questions</div>
+      <h2>The things you are <span class="cy">actually wondering.</span></h2>
+    </div>
+    <div class="rv" style="margin-top:28px">
+      <div class="faq"><button>Do you guarantee leads, appointments or new clients?<i class="fa-solid fa-plus"></i></button>
+        <div class="ans"><p>No, and we will not pretend otherwise. We run the outreach activity, consistently and on an agreed sequence, and we report what actually happened. Messages sent, replies, and qualified prospects are reported separately so you can see the real picture. If you want a specific measurable commitment, we agree it in writing first rather than promising it on a website.</p></div></div>
+
+      <div class="faq"><button>How does the 65 property limit work?<i class="fa-solid fa-plus"></i></button>
+        <div class="ans"><p>The Standard plan is $450 a month and includes quality control and delivery for up to 65 properties. Every property above 65 adds $3. So 70 properties is $465 and 80 is $495. If your volume is high or unpredictable, the $599 unlimited plan removes the per property fee entirely.</p></div></div>
+
+      <div class="faq"><button>Is the quality control done by a person or by software?<i class="fa-solid fa-plus"></i></button>
+        <div class="ans"><p>Both, and we keep them clearly separate. Automated checks run first and flag the obvious problems. A person then reviews every flag against your standards and decides what actually needs fixing. Both sit inside Media Quality Control, so there is nothing extra to buy.</p></div></div>
+
+      <div class="faq"><button>Which delivery platforms and file types do you support?<i class="fa-solid fa-plus"></i></button>
+        <div class="ans"><p>That depends on what you already use. Supported platforms, file types, turnaround times and procedures are confirmed against your systems during setup rather than assumed. Tell us your stack on the call and we will tell you honestly what we can take on.</p></div></div>
+
+      <div class="faq"><button>What exactly is included in my scope?<i class="fa-solid fa-plus"></i></button>
+        <div class="ans"><p>Whatever we agree, written down before the first month. Deliverable quantities, outreach volume, follow up cadence, calling hours, monthly working hours and communication coverage are all set per client. The prices on this page are the service rates. The scope behind them is yours to define.</p></div></div>
+
+      <div class="faq"><button>How do we start?<i class="fa-solid fa-plus"></i></button>
+        <div class="ans"><p>Book a meeting. We go through your current workflow, what is taking your time, and which parts you would hand over first. You leave with a clear scope and a price, with no obligation to continue.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="sec sec--cyan" id="contact">
+  <div class="wrap" style="max-width:760px">
+    <div class="rv intro">
+      <div class="eyebrow">Start here</div>
+      <h2>Tell us what is taking your time. <span class="cy">We will scope the rest.</span></h2>
+      <p class="lead">A short call to understand your workflow, agree what you want handed over, and set the responsibilities in writing. No obligation to continue afterwards.</p>
+      <a href="#contact" class="btn" style="margin-top:10px">Book a Meeting</a>
+      <div class="fud"><i class="fa-solid fa-circle-check"></i>Scope and responsibilities agreed before any work begins.</div>
+    </div>
+    <div class="grid g2 stag rv" style="margin-top:28px;text-align:left">
+      <a class="card" href="https://wa.me/923269076048" target="_blank" rel="noopener" style="text-decoration:none">
+        <div class="icn"><i class="fa-brands fa-whatsapp"></i></div>
+        <h3>WhatsApp</h3><p>+92 3269076048</p></a>
+      <a class="card" href="mailto:thecorporatecallagency@gmail.com" style="text-decoration:none">
+        <div class="icn"><i class="fa-solid fa-envelope"></i></div>
+        <h3>Email</h3><p>thecorporatecallagency@gmail.com</p></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fcol fcol--brand">
+        <img class="flogo" src="assets/brand/logo-light.png" alt="Real Estate Media Growth Assistants"
+             width="420" height="371" loading="lazy" decoding="async">
+        <p class="ftag">Supporting the work behind your growth.</p>
+        <div class="social">
+          <a href="https://www.instagram.com/re_media_growth_assistants/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=61574909167134" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+          <a href="https://wa.me/923269076048" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+          <a href="mailto:thecorporatecallagency@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div class="fcol">
+        <h4>Pages</h4>
+        <a href="#top">Home</a><a href="#services">Services</a><a href="#how">How It Works</a>
+        <a href="#proofs">Proofs</a><a href="#about">About</a>
+      </div>
+
+      <div class="fcol">
+        <h4>What we do</h4>
+        <a href="#services">Outreach</a><a href="#services">Media quality control</a>
+        <a href="#services">Media delivery</a><a href="#services">Content and branding</a>
+        <a href="#services">Admin support</a>
+      </div>
+
+      <div class="fcol">
+        <h4>Get in touch</h4>
+        <a href="mailto:thecorporatecallagency@gmail.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i>thecorporatecallagency@gmail.com</a>
+        <a href="https://wa.me/923269076048" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>+92 326 9076048</a>
+        <a href="#pricing"><i class="fa-solid fa-tag" aria-hidden="true"></i>Pricing</a>
+        <a href="#faq"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>FAQ</a>
+        <a href="#contact" class="btn btn--ghost fcta">Book a Meeting</a>
+      </div>
+    </div>
+
+    <div class="fbottom">
+      <span>&copy; 2026 Real Estate Media Growth Assistants</span>
+      <span class="fbnote">Outreach, media QC, delivery and admin for real estate media companies.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* Which way the page is moving. The reveal direction follows it, so scrolling
+   back up drops content in from above rather than pushing it up from below. */
+(function(){
+  if(reduced) return;
+  const root=document.documentElement;
+  let last=scrollY, tick=false;
+  addEventListener('scroll',()=>{
+    if(tick) return; tick=true;
+    requestAnimationFrame(()=>{
+      const y=scrollY;
+      if(Math.abs(y-last)>6) root.classList.toggle('scrolling-up', y<last), last=y;
+      tick=false;
+    });
+  },{passive:true});
+})();
+
+/* A two column row should come in from the sides it actually occupies. Measure
+   each child against the row's centre rather than trusting source order, and
+   clear it again when the row stacks, where a sideways slide reads as a glitch. */
+(function(){
+  if(reduced) return;
+  const rows=[...document.querySelectorAll('.hero-grid, .grid.g2')];
+  if(!rows.length) return;
+  const assign=()=>{
+    rows.forEach(row=>{
+      const cols=getComputedStyle(row).gridTemplateColumns.split(' ').filter(Boolean).length;
+      const r=row.getBoundingClientRect(), mid=r.left+r.width/2;
+      [...row.children].forEach(ch=>{
+        if(cols<2){ delete ch.dataset.rv; return; }
+        const c=ch.getBoundingClientRect();
+        if(c.width > r.width*0.9){ delete ch.dataset.rv; return; }   // full width child
+        ch.classList.add('rv');
+        ch.dataset.rv = (c.left+c.width/2) < mid ? 'left' : 'right';
+      });
+    });
+  };
+  assign();
+  let t; addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(assign,180);},{passive:true});
+})();
+
+/* The decorative parallax that used to live here is gone on purpose. It made
+   the client portraits visibly drift while scrolling, and it read every
+   image's box on every scroll frame, which is layout work the browser has to
+   stop and do before it can paint. */
+
+/* scroll reveal + stagger, replays every time a section returns */
+const revealables=document.querySelectorAll('.rv, .stag');
+const revealAll=()=>revealables.forEach(el=>el.classList.add('in'));
+if(!('IntersectionObserver' in window)||reduced){ revealAll(); }
+else{
+  const io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('in', e.isIntersecting)),{threshold:.12});
+  revealables.forEach(el=>io.observe(el));
+  setTimeout(()=>{ if(!document.querySelector('.rv.in')) revealAll(); },2500);
+}
+
+/* FAQ */
+document.querySelectorAll('.faq button').forEach(b=>b.addEventListener('click',()=>{
+  const f=b.parentElement, open=f.classList.contains('open');
+  document.querySelectorAll('.faq').forEach(x=>x.classList.remove('open'));
+  if(!open) f.classList.add('open');
+}));
+
+/* hero headline, character by character, words kept whole */
+(function(){
+  const h1=document.querySelector('h1');
+  if(!h1||reduced) return;
+  let i=0;
+  const walk=node=>{
+    [...node.childNodes].forEach(n=>{
+      if(n.nodeType===3){
+        const frag=document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(tok=>{
+          if(!tok) return;
+          if(/^\s+$/.test(tok)){ frag.appendChild(document.createTextNode(' ')); return; }
+          const w=document.createElement('span'); w.className='w';
+          [...tok].forEach(c=>{
+            const s=document.createElement('span'); s.className='ch'; s.textContent=c;
+            s.style.animationDelay=(i++*32)+'ms'; w.appendChild(s);
+          });
+          frag.appendChild(w);
+        });
+        n.replaceWith(frag);
+      } else if(n.nodeType===1 && n.tagName!=='BR'){ walk(n); }
+    });
+  };
+  walk(h1); h1.classList.add('split');
+  const chars=[...h1.querySelectorAll('.ch')];
+  new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){
+      h1.classList.remove('split'); void h1.offsetWidth; h1.classList.add('split');
+      chars.forEach((c,n)=>c.style.animationDelay=(n*32)+'ms');
+    }
+  }),{threshold:.5}).observe(h1);
+})();
+
+/* typewriter on every section heading, replays on re-entry */
+(function(){
+  const splitInto=(node,bucket)=>{
+    [...node.childNodes].forEach(n=>{
+      if(n.nodeType===3){
+        const frag=document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(tok=>{
+          if(!tok) return;
+          if(/^\s+$/.test(tok)){
+            const sp=document.createElement('span'); sp.className='ch sp'; sp.textContent=' ';
+            frag.appendChild(sp); bucket.push(sp); return;
+          }
+          const w=document.createElement('span'); w.className='w';
+          [...tok].forEach(c=>{
+            const sp=document.createElement('span'); sp.className='ch'; sp.textContent=c;
+            w.appendChild(sp); bucket.push(sp);
+          });
+          frag.appendChild(w);
+        });
+        n.replaceWith(frag);
+      } else if(n.nodeType===1 && n.tagName!=='BR'){ splitInto(n,bucket); }
+    });
+  };
+  document.querySelectorAll('.sec h2').forEach(h2=>{
+    if(reduced) return;
+    const chars=[]; splitInto(h2,chars);
+    if(!chars.length) return;
+    const caret=document.createElement('span');
+    caret.className='caret'; caret.setAttribute('aria-hidden','true');
+    h2.appendChild(caret); h2.classList.add('tw');
+    h2._reset=()=>{ clearTimeout(h2._t); h2.classList.remove('typing','typed');
+      for(let k=0;k<chars.length;k++) chars[k].style.visibility='hidden'; h2._running=false; };
+    h2._type=()=>{
+      if(h2._running) return; h2._running=true;
+      h2.classList.remove('typed'); h2.classList.add('typing');
+      for(let k=0;k<chars.length;k++) chars[k].style.visibility='hidden';
+      let i=0;
+      const step=()=>{
+        chars[i].style.visibility='visible'; i++;
+        if(i<chars.length){ h2._t=setTimeout(step, chars[i-1].textContent===' '?26:22); }
+        else { h2.classList.remove('typing'); h2.classList.add('typed'); h2._running=false; }
+      };
+      step();
+    };
+  });
+  const tio=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.target._type) return;
+    if(e.isIntersecting) e.target._type(); else e.target._reset();
+  }),{threshold:.35});
+  document.querySelectorAll('.sec h2').forEach(h=>tio.observe(h));
+})();
+
+/* counters */
+(function(){
+  const nums=[...document.querySelectorAll('.num')].filter(n=>/^\d/.test(n.textContent.trim()));
+  if(!nums.length) return;
+  const run=el=>{
+    if(el._running) return;
+    const raw=el.dataset.final || el.textContent.trim();
+    el.dataset.final=raw;
+    const m=raw.match(/^([\d.]+)(.*)$/); if(!m) return;
+    const target=parseFloat(m[1]), suffix=m[2], dec=(m[1].split('.')[1]||'').length, pad=m[1].startsWith('0');
+    if(reduced){ el.textContent=raw; return; }
+    el._running=true;
+    const dur=1100, t0=performance.now();
+    const tick=t=>{
+      const p=Math.min((t-t0)/dur,1), eased=1-Math.pow(1-p,3);
+      let v=(target*eased).toFixed(dec);
+      if(pad && v.length<2) v='0'+v;
+      el.textContent=v+suffix;
+      if(p<1){ requestAnimationFrame(tick); } else { el.textContent=raw; el._running=false; }
+    };
+    requestAnimationFrame(tick);
+  };
+  const nio=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) run(e.target); }),{threshold:.55});
+  nums.forEach(n=>nio.observe(n));
+})();
+
+/* mobile drawer */
+(function(){
+  const burger=document.querySelector('.burger'), drawer=document.getElementById('drawer'),
+        scrim=document.querySelector('.scrim'), close=document.querySelector('.drawer-close');
+  if(!burger||!drawer) return;
+  const setOpen=open=>{
+    burger.classList.toggle('open',open);
+    burger.setAttribute('aria-expanded',open);
+    drawer.style.transform = open ? 'translateX(0)' : 'translateX(102%)';
+    drawer.setAttribute('aria-hidden',!open);
+    document.body.classList.toggle('locked',open);
+    if(open){ scrim.hidden=false; void scrim.offsetWidth; scrim.style.opacity='1'; }
+    else { scrim.style.opacity='0'; setTimeout(()=>{ if(drawer.getAttribute('aria-hidden')==='true') scrim.hidden=true; },320); }
+  };
+  burger.addEventListener('click',()=>setOpen(drawer.getAttribute('aria-hidden')!=='false'));
+  close.addEventListener('click',()=>setOpen(false));
+  scrim.addEventListener('click',()=>setOpen(false));
+  drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setOpen(false)));
+  addEventListener('keydown',e=>{ if(e.key==='Escape') setOpen(false); });
+  addEventListener('resize',()=>{ if(innerWidth>=900) setOpen(false); });
+})();
+
+
+/* Before and after: drag, touch or arrow keys, plus two things that make it move
+   on its own. The card tilts in 3D under the pointer, and as it travels through
+   the viewport the divider sweeps so you see the change without touching it.
+   The sweep yields the moment you take hold of it and never comes back. */
+(function(){
+  const tiltable = !reduced && matchMedia('(hover:hover) and (pointer:fine)').matches;
+  document.querySelectorAll('.ba').forEach(ba=>{
+    const set=pct=>{ba.style.setProperty('--p', Math.max(0,Math.min(100,pct))+'%')};
+    const pos=()=>{ const raw=ba.style.getPropertyValue('--p'); return raw===''?50:parseFloat(raw); };
+    const fromEvent=e=>{
+      const r=ba.getBoundingClientRect();
+      const x=(e.touches?e.touches[0].clientX:e.clientX)-r.left;
+      set(x/r.width*100);
+    };
+    let dragging=false, touched=false;
+    const takeOver=()=>{ touched=true; ba.classList.add('ba--held'); };
+
+    const down=e=>{dragging=true;takeOver();fromEvent(e);};
+    const move=e=>{if(dragging){fromEvent(e); if(e.cancelable)e.preventDefault();}};
+    const up=()=>{dragging=false};
+    ba.addEventListener('pointerdown',down);
+    addEventListener('pointermove',move,{passive:false});
+    addEventListener('pointerup',up);
+    ba.addEventListener('keydown',e=>{
+      const cur=pos();
+      if(e.key==='ArrowLeft'){takeOver();set(cur-4);e.preventDefault();}
+      if(e.key==='ArrowRight'){takeOver();set(cur+4);e.preventDefault();}
+    });
+    ba.tabIndex=0;
+    ba.setAttribute('role','slider');
+    ba.setAttribute('aria-label','Drag to compare before and after');
+
+    /* Wheel over the card drives the comparison instead of the page. It only
+       swallows the scroll while the divider still has somewhere to go; at either
+       end the page takes the scroll back, so the card never traps you. */
+    /* The wheel belongs to the card for as long as the pointer is on it: the
+       page never scrolls from here, even once the divider is parked at an end.
+       Move the cursor off the image to carry on down the page. */
+    ba.addEventListener('wheel',e=>{
+      e.preventDefault(); takeOver();
+      set(Math.max(0,Math.min(100,pos()+(e.deltaY+e.deltaX)*0.11)));
+    },{passive:false});
+
+    /* 3D tilt under the pointer. Mouse only: on a touch screen there is no hover
+       state to leave, so the card would stick at whatever angle you last tapped. */
+    if(tiltable){
+      ba.addEventListener('pointermove',e=>{
+        if(dragging) return;
+        const r=ba.getBoundingClientRect();
+        const dx=(e.clientX-r.left)/r.width-.5, dy=(e.clientY-r.top)/r.height-.5;
+        ba.style.setProperty('--ry',( dx*17).toFixed(2)+'deg');
+        ba.style.setProperty('--rx',(-dy*12).toFixed(2)+'deg');
+        ba.classList.add('ba--tilt');
+      });
+      ba.addEventListener('pointerleave',()=>{
+        ba.style.setProperty('--rx','0deg'); ba.style.setProperty('--ry','0deg');
+        ba.classList.remove('ba--tilt');
+      });
+    }
+
+    /* Scroll driven sweep: map the card's trip through the viewport onto the
+       divider, so it opens as it rises and settles near the middle. */
+    /* Position is cached as a document offset and turned into a viewport one
+       with scrollY, so the sweep costs no layout read while scrolling. */
+    ba.remeasure=()=>{ const r=ba.getBoundingClientRect(); ba._top=r.top+scrollY; ba._h=r.height; };
+    ba.sweep=()=>{
+      if(reduced||touched||!ba._h) return;
+      const vh=innerHeight, top=ba._top-scrollY;
+      if(top+ba._h<0||top>vh) return;
+      const t=1-(top+ba._h*0.35)/vh;             // 0 entering, 1 leaving
+      set(14+Math.max(0,Math.min(1,t))*58);      // 14% -> 72%
+    };
+  });
+
+  const bas=[...document.querySelectorAll('.ba')];
+  if(bas.length && !reduced){
+    let tick=false;
+    const remeasureAll=()=>bas.forEach(b=>b.remeasure());
+    const run=()=>{ bas.forEach(b=>b.sweep()); tick=false; };
+    remeasureAll();
+    addEventListener('load',()=>{remeasureAll();run();});
+    addEventListener('resize',()=>{remeasureAll();run();},{passive:true});
+    setTimeout(()=>{remeasureAll();run();},1200);
+    addEventListener('scroll',()=>{ if(!tick){tick=true;requestAnimationFrame(run);} },{passive:true});
+    run();
+  }
+})();
+
+/* intro video: click to play with sound, controls appear once it is running */
+(function(){
+  const fig=document.getElementById('introvid'); if(!fig) return;
+  const v=fig.querySelector('video'), b=fig.querySelector('.vid-play');
+  b.addEventListener('click',()=>{
+    v.controls=true; fig.classList.add('playing');
+    v.play().catch(()=>{ fig.classList.remove('playing'); });
+  });
+  v.addEventListener('pause',()=>{ if(v.currentTime===0) fig.classList.remove('playing'); });
+  v.addEventListener('ended',()=>{ fig.classList.remove('playing'); v.controls=false; });
+})();
+
+/* the lot line row is a pure CSS belt now, so it needs no script */
+
+/* ===== cursor grid =====
+   The dots have to show on every band, including the cyan ones, while still
+   sitting behind the words and the photographs. Making cyan translucent would
+   do it but would shift the brand colour, so the canvas paints the band colours
+   itself: the sections hand over their background, the canvas fills each band
+   with its exact colour and lays the lattice on top, and page content stacks
+   above all of it. Cyan stays #2CCCE4 to the byte.
+
+   Cost control: the lattice is far too many dots to simulate every frame, so
+   only those inside the pointer's reach move and are drawn one by one.
+   Everything at rest comes from two prebuilt images, dark dots for the light
+   bands and cyan dots for the dark ones, clipped band by band. */
+(function(){
+  const cv=document.getElementById('dots'); if(!cv||reduced) return;
+  if(!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+
+  const ctx=cv.getContext('2d');
+  const CY='rgb(44,204,228)', PAPER='rgb(244,249,250)', DARKC='rgb(7,20,24)';
+  const DOT_INK=[6,22,26], DOT_CY=[44,204,228];
+  const step=20, reach=130;     // the cluster the pointer carries
+  let w=0,h=0,dpr=1,cols=0,rows=0,dots=[];
+  let mx=-9999,my=-9999,raf=0,idle=0,painted=false;
+  const rgba=(c,a)=>'rgba('+c[0]+','+c[1]+','+c[2]+','+a.toFixed(3)+')';
+
+  // the footer is left out: it paints its own background and sits above the
+  // canvas, so the effect stops where it begins
+  const bands=[...document.querySelectorAll('.sec,.marquee')].map(el=>({
+    el,
+    fill: el.classList.contains('sec--cyan')  ? CY
+        : el.classList.contains('sec--paper') ? PAPER : DARKC,
+    dark: !(el.classList.contains('sec--cyan')||el.classList.contains('sec--paper'))
+  }));
+
+  function layout(){
+    dpr=Math.min(devicePixelRatio||1,2);
+    w=innerWidth; h=innerHeight;
+    if(w<2||h<2) return;
+    cv.width=Math.round(w*dpr); cv.height=Math.round(h*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    cols=Math.ceil(w/step)+1; rows=Math.ceil(h/step)+1;
+    dots=new Array(cols*rows);
+    for(let r=0;r<rows;r++) for(let c=0;c<cols;c++)
+      dots[r*cols+c]={ox:c*step,oy:r*step,x:c*step,y:r*step,vx:0,vy:0};
+  }
+
+  /* Band positions are measured once and cached as document offsets, then
+     turned into viewport coordinates with scrollY. Reading every band's box on
+     every scroll frame forces the browser to redo layout before it can paint,
+     which is what the scrolling was catching on. */
+  function measure(){
+    const y=scrollY;
+    for(const b of bands){
+      const r=b.el.getBoundingClientRect();
+      b.top=r.top+y; b.bot=r.bottom+y;
+    }
+  }
+  const visible=()=>{
+    const y=scrollY, out=[];
+    for(const b of bands){
+      const top=b.top-y, bot=b.bot-y;
+      if(bot<=0||top>=h) continue;
+      out.push({top:Math.max(0,top),bot:Math.min(h,bot),fill:b.fill,dark:b.dark});
+    }
+    return out;
+  };
+  const bandAt=(y,vis)=>vis.find(v=>y>=v.top&&y<v.bot)||vis[0]||{dark:true};
+
+  const paintBands=vis=>{
+    for(const v of vis){ ctx.fillStyle=v.fill; ctx.fillRect(0,v.top,w,v.bot-v.top); }
+  };
+
+  function draw(){
+    if(w<2){ raf=0; return; }
+    const vis=visible();
+    ctx.clearRect(0,0,w,h);
+    paintBands(vis);
+
+    /* Only the dots the pointer is actually near are drawn. There is no lattice
+       across the rest of the page: away from the cursor the background is just
+       the band colour. Each dot fades out toward the edge of the reach so the
+       cluster has no hard rim. */
+    let busy=false;
+    if(mx>-9000){
+      const x0=Math.max(0,mx-reach), x1=Math.min(w,mx+reach);
+      const y0=Math.max(0,my-reach), y1=Math.min(h,my+reach);
+      const c0=Math.max(0,Math.floor(x0/step)), c1=Math.min(cols-1,Math.ceil(x1/step));
+      const r0=Math.max(0,Math.floor(y0/step)), r1=Math.min(rows-1,Math.ceil(y1/step));
+      for(let r=r0;r<=r1;r++) for(let c=c0;c<=c1;c++){
+        const d=dots[r*cols+c];
+        const dx=d.x-mx, dy=d.y-my, dist=Math.hypot(dx,dy)||1;
+        if(dist<reach){ const f=(1-dist/reach)*14; d.vx+=(dx/dist)*f*0.16; d.vy+=(dy/dist)*f*0.16; }
+        d.vx+=(d.ox-d.x)*0.055; d.vy+=(d.oy-d.y)*0.055;
+        d.vx*=0.82; d.vy*=0.82; d.x+=d.vx; d.y+=d.vy;
+        const off=Math.min(1,Math.hypot(d.x-d.ox,d.y-d.oy)/13);
+        if(off>0.002||dist<reach) busy=true;
+        const near=1-Math.min(1,dist/reach);
+        const fade=Math.min(1,near*1.5);            // full through the middle,
+        if(fade<=0.01) continue;                    // fading only at the rim
+        const band=bandAt(d.y,vis), col=band.dark?DOT_CY:DOT_INK;
+        ctx.beginPath(); ctx.arc(d.x,d.y,0.9+off*1.9,0,6.283);
+        ctx.fillStyle=rgba(col,((band.dark?.30:.34)+off*.55)*fade); ctx.fill();
+      }
+    }
+    /* Only now, once a frame with the band colours in it is actually on screen,
+       do the sections let go of their own backgrounds. Handing over any earlier
+       leaves the page colourless for as long as the first frame is delayed,
+       which is exactly what happens in a background tab or on a slow device. */
+    if(!painted){ painted=true; document.documentElement.classList.add('dots-bg'); }
+    raf = busy ? requestAnimationFrame(draw) : 0;
+  }
+  const kick=()=>{ cancelAnimationFrame(raf); raf=requestAnimationFrame(draw); };
+
+  addEventListener('pointermove',e=>{
+    // The footer is out of the effect. It paints its own background over the
+    // canvas, so dots there were invisible anyway, but there is no sense
+    // animating behind something opaque.
+    const overFooter = e.target && e.target.closest && e.target.closest('footer');
+    if(overFooter){ if(mx>-9000){ mx=-9999; my=-9999; kick(); } return; }
+    mx=e.clientX; my=e.clientY;
+    clearTimeout(idle);
+    idle=setTimeout(()=>{ mx=-9999; my=-9999; kick(); },2600);
+    kick();
+  },{passive:true});
+  addEventListener('scroll',kick,{passive:true});
+  addEventListener('resize',()=>{ layout(); kick(); },{passive:true});
+  document.addEventListener('visibilitychange',()=>{ if(!document.hidden) kick(); });
+
+  layout(); measure();
+  // sections shift as images and fonts land, so re-measure then, not every frame
+  addEventListener('load',measure);
+  addEventListener('resize',measure,{passive:true});
+  setTimeout(measure,1200); setTimeout(measure,4000);
+  cv.classList.add('on');
+  kick();
+  window.solomonDots={cv,get dots(){return dots.length},step,reach,
+    get bands(){return visible().length}};
+})();
+</script>
+</body>
+</html>
