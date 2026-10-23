@@ -174,15 +174,7 @@ p:last-child{margin-bottom:0}
 
 
 
-/* two people, one company: a pair of circles sharing the card */
-.cl-pic--pair{background:none;border:0;box-shadow:none;border-radius:0;
-  display:flex;align-items:center;justify-content:center;aspect-ratio:1}
-.cl-pic--pair img{width:68%;height:auto;aspect-ratio:1;object-fit:cover;object-position:center 22%;
-  border-radius:50%;border:3px solid var(--white);box-shadow:0 8px 24px rgba(6,22,26,.18)}
-.cl-pic--pair img:last-child{margin-left:-22%}
-.cl:hover .cl-pic--pair img:first-child{transform:translateX(-5%)}
-.cl:hover .cl-pic--pair img:last-child{transform:translateX(5%)}
-.cl-pic--pair img{transition:transform .4s var(--e-out)}
+/* the paired card style is gone: Austin and Chris have cards of their own */
 
 /* ===== owner ===== */
 .owner{margin:0;text-align:center}
@@ -201,6 +193,13 @@ p:last-child{margin-bottom:0}
 .team figcaption{margin-top:12px;display:flex;flex-direction:column;line-height:1.35}
 .team figcaption b{font-family:var(--f-display);font-size:.95rem;font-weight:700;color:var(--ink)}
 .team figcaption span{font-size:.79rem;color:var(--sub);margin-top:3px}
+
+/* on a phone the picture leads, whichever side it takes on desktop */
+@media(max-width:759px){
+  .abt-row{display:flex;flex-direction:column}
+  .abt-row--flip figure{order:-1}
+}
+.team img{width:min(100%,340px)}
 
 /* ===== tool stack ===== */
 .tools{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
@@ -302,9 +301,12 @@ footer{position:relative;z-index:2}
   .dmrow{overflow-x:auto;-webkit-mask-image:none;mask-image:none}}
 
 /* ===== client wall ===== */
-.cl-wall{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 14px}
-@media(min-width:560px){.cl-wall{grid-template-columns:repeat(3,1fr);gap:24px 18px}}
-@media(min-width:900px){.cl-wall{grid-template-columns:repeat(6,1fr);gap:28px 20px}}
+/* flex rather than grid, so a final row that does not fill the width sits
+   centred instead of hanging off the left edge */
+.cl-wall{display:flex;flex-wrap:wrap;justify-content:center;gap:18px 14px}
+.cl-wall .cl{flex:0 0 calc((100% - 14px)/2)}
+@media(min-width:560px){.cl-wall{gap:24px 18px}.cl-wall .cl{flex:0 0 calc((100% - 36px)/3)}}
+@media(min-width:900px){.cl-wall{gap:28px 20px}.cl-wall .cl{flex:0 0 calc((100% - 100px)/6)}}
 .cl{text-align:center}
 .cl-pic{position:relative;width:100%;aspect-ratio:1;border-radius:50%;overflow:hidden;
   background:var(--surf);border:3px solid var(--white);
@@ -756,25 +758,32 @@ footer{background:#FFFFFF;color:var(--ink);border-top:1px solid rgba(6,22,26,.12
 <!-- ===== ABOUT ===== -->
 <section class="sec sec--cyan" id="about">
   <div class="wrap">
-    <div class="grid g2 rv" style="gap:38px;align-items:center">
+    <!-- two rows that mirror each other: portrait left and words right, then
+         words left and the team right. On a phone each row stacks image first. -->
+    <div class="grid g2 rv abt-row" style="gap:38px;align-items:center">
       <figure class="owner">
         <img src="assets/owner/solomon.webp" alt="Solomon Smith, Real Estate Media Growth Assistants"
              width="760" height="760" loading="lazy" decoding="async">
         <figcaption><b>Solomon Smith</b><span>Real Estate Media Growth Assistants</span></figcaption>
-      </figure>
-      <figure class="team">
-        <img src="assets/owner/team.webp" alt="Naina and Adnan, who lead the team"
-             width="675" height="900" loading="lazy" decoding="async">
-        <figcaption><b>Naina &amp; Adnan</b><span>Co-founder and team lead</span></figcaption>
       </figure>
       <div>
         <div class="eyebrow">Who we are</div>
         <h2 style="text-align:left">Your partner in media operations and <span class="cy">business growth.</span></h2>
         <p>Real Estate Media Growth Assistants supports real estate photographers and media companies with the operational and business development tasks that keep a business moving. Outreach and prospect management, media quality control, delivery, content, and administrative support.</p>
         <p>Running a real estate media business involves much more than taking great photographs. It also requires consistent communication, organised order management, reliable delivery workflows, client relationships, and ongoing business development. Our services exist so you can delegate those parts.</p>
+      </div>
+    </div>
+
+    <div class="grid g2 rv abt-row abt-row--flip" style="gap:38px;align-items:center;margin-top:44px">
+      <div>
         <p><b style="color:var(--ink)">Our mission.</b> To support real estate media professionals with practical, dependable assistance across client acquisition, media operations and business administration.</p>
         <p><b style="color:var(--ink)">Our goal.</b> Give media business owners more time to focus on their craft, serve their clients, and develop their businesses.</p>
       </div>
+      <figure class="team">
+        <img src="assets/owner/team.webp" alt="Naina and Adnan, who lead the team"
+             width="675" height="900" loading="lazy" decoding="async">
+        <figcaption><b>Naina &amp; Adnan</b><span>Co-founder and team lead</span></figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -950,11 +959,14 @@ footer{background:#FFFFFF;color:var(--ink);border-top:1px solid rgba(6,22,26,.12
         <figcaption><b>Brooklyn</b><span>Re Media LLC</span></figcaption>
       </figure>
       <figure class="cl">
-        <div class="cl-pic cl-pic--pair">
-          <img src="assets/clients/darien.webp" alt="Darien of Apex Visual Media" loading="lazy" decoding="async">
-          <img src="assets/clients/austin.webp" alt="Austin of Apex Visual Media" loading="lazy" decoding="async">
-        </div>
-        <figcaption><b>Darien &amp; Austin</b><span>Apex Visual Media</span></figcaption>
+        <div class="cl-pic"><img src="assets/clients/darien.webp" alt="Darien of Apex Visual Media" loading="lazy" decoding="async">
+        <img class="cl-badge" src="assets/clients/darien-logo.webp" alt="" loading="lazy" decoding="async"></div>
+        <figcaption><b>Darien</b><span>Apex Visual Media</span></figcaption>
+      </figure>
+      <figure class="cl">
+        <div class="cl-pic"><img src="assets/clients/austin.webp" alt="Austin of Apex Visual Media" loading="lazy" decoding="async">
+        <img class="cl-badge" src="assets/clients/darien-logo.webp" alt="" loading="lazy" decoding="async"></div>
+        <figcaption><b>Austin</b><span>Apex Visual Media</span></figcaption>
       </figure>
       <figure class="cl">
         <div class="cl-pic"><img src="assets/clients/gilbert.webp" alt="Gilbert and Sydnie of GSM Media" loading="lazy" decoding="async"></div>
@@ -970,11 +982,14 @@ footer{background:#FFFFFF;color:var(--ink);border-top:1px solid rgba(6,22,26,.12
         <figcaption><b>Karla</b><span>KMS Photography</span></figcaption>
       </figure>
       <figure class="cl">
-        <div class="cl-pic cl-pic--pair">
-          <img src="assets/clients/matt.webp" alt="Matt of Cam Media LLC" loading="lazy" decoding="async">
-          <img src="assets/clients/chris.webp" alt="Chris of Cam Media LLC" loading="lazy" decoding="async">
-        </div>
-        <figcaption><b>Matt &amp; Chris</b><span>Cam Media LLC</span></figcaption>
+        <div class="cl-pic"><img src="assets/clients/matt.webp" alt="Matt of Cam Media LLC" loading="lazy" decoding="async">
+        <img class="cl-badge" src="assets/clients/matt-logo.webp" alt="" loading="lazy" decoding="async"></div>
+        <figcaption><b>Matt</b><span>Cam Media LLC</span></figcaption>
+      </figure>
+      <figure class="cl">
+        <div class="cl-pic"><img src="assets/clients/chris.webp" alt="Chris of Cam Media LLC" loading="lazy" decoding="async">
+        <img class="cl-badge" src="assets/clients/matt-logo.webp" alt="" loading="lazy" decoding="async"></div>
+        <figcaption><b>Chris</b><span>Cam Media LLC</span></figcaption>
       </figure>
       <figure class="cl">
         <div class="cl-pic"><img src="assets/clients/michelle.webp" alt="Michelle of MandW Real Estate Media" loading="lazy" decoding="async">
